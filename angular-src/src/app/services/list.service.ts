@@ -19,13 +19,6 @@ export class ListService {
       .map(res => <List[]>res.lists);
   }
 
-  public deleteList(listId: string) {
-    const URI = `${this.serverApi}/bucketlist/${listId}`;
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.delete(URI, { headers: headers }).map(res => res.json());
-  }
-
   public addList(list: List) {
     const URI = `${this.serverApi}/bucketlist/`;
     const headers = new Headers();
@@ -36,7 +29,14 @@ export class ListService {
     });
     headers.append('Content-Type', 'application/json');
     return this.http
-      .post(URI, body, { headers: headers })
-      .map(res => res.json());
+    .post(URI, body, { headers: headers })
+    .map(res => res.json());
+  }
+
+  public deleteList(listId: string) {
+    const URI = `${this.serverApi}/bucketlist/${listId}`;
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.delete(URI, { headers: headers }).map(res => res.json());
   }
 }

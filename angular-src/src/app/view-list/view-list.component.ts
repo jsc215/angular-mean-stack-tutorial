@@ -28,7 +28,7 @@ export class ViewListComponent implements OnInit {
   // The deleted list is being filtered out using the .filter method
   public deleteList(list: List) {
     this.listServ.deleteList(list._id).subscribe(response => {
-      this.lists = this.lists.filter(lists => lists !== list);
+    this.lists = this.lists.filter(lists => lists !== list);
     });
   }
 
